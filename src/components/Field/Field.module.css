@@ -1,0 +1,23 @@
+.lable {
+  display: block;
+}
+
+.title {
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.error {
+  color: var(--c-red);
+  font-size: 12px;
+  line-height: 1;
+  height: 25px;
+  padding-top: 5px;
+}
+
+.input {
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}

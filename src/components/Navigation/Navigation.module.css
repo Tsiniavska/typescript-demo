@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  padding: 10px;
+  display: flex;
+  transition: var(--t-normal);
+  color: var(--c-black);
+}
+
+.link:hover {
+  color: var(--c-primary);
+}
