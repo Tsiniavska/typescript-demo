@@ -1,23 +1,36 @@
 // * Base
 import axios from 'axios';
 import { useCallback, useState, useEffect } from 'react';
+import React from 'react';
 
 // * Components
 import Button from '../../components/Button/Button';
-import Wrapper from '../../components/Wrapper/Wrapper';
 import Loading from '../../components/Loading/Loading';
 
-// * Styles
-import styles from './List.module.css';
+// * Types
+import { EButton, EDesign } from '../../types/button.types';
 
-const DEFAULT_STATE = {
+// * Types local
+type Post = {
+  id: number;
+  title: string;
+  body: string;
+};
+
+type State = {
+  list: Post[];
+  error: string;
+  loading: boolean;
+};
+
+const DEFAULT_STATE: State = {
   list: [],
   error: '',
   loading: true,
 };
 
-const List = () => {
-  const [state, setState] = useState(DEFAULT_STATE);
+const List: React.FC = () => {
+  const [state, setState] = useState<State>(DEFAULT_STATE);
 
   const getList = useCallback(() => {
     setState((prevState) => ({
@@ -26,7 +39,7 @@ const List = () => {
     }));
 
     axios
-      .get('https://jsonplaceholder.typicode.com/posts')
+      .get<Post[]>('https://jsonplaceholder.typicode.com/posts')
       .then(({ data }) => {
         setState((prevState) => ({
           ...prevState,
@@ -59,10 +72,16 @@ const List = () => {
   if (state.error) {
     return (
       <>
-        <Wrapper>
-          <p className={styles.error}>{state.error}</p>
-          <Button text="Retry" design="retry" onClick={getList} />
-        </Wrapper>
+        <div className="wrapper">
+          <p className="mt-[30px] mb-[30px]">{state.error}</p>
+          <Button
+            text="Retry"
+            design={EDesign.RETRY}
+            onClick={getList}
+            href=""
+            type={EButton.BUTTON}
+          />
+        </div>
       </>
     );
   }
@@ -72,20 +91,25 @@ const List = () => {
   }
 
   return (
-    <Wrapper>
-      <ul className={styles.list}>
+    <div className="wrapper">
+      <ul className="mt-[150px]">
         {state.list.map(({ id, body, title }) => (
           <Item key={`list item ${id}`} title={title} body={body} />
         ))}
       </ul>
-    </Wrapper>
+    </div>
   );
 };
-// eslint-disable-next-line react/prop-types
-const Item = ({ title, body }) => {
+
+type ItemProps = {
+  title: string;
+  body: string;
+};
+
+const Item: React.FC<ItemProps> = ({ title, body }) => {
   return (
     <li>
-      <h4>{title}</h4>
+      <h4 className="font-bold">{title}</h4>
       <p>{body}</p>
     </li>
   );

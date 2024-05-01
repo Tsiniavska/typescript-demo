@@ -1,0 +1,33 @@
+/* Wrapper */
+.wrapper {
+  @apply max-w-[1230px] mx-auto pl-[15px] pr-[15px] w-full;
+}
+
+/* Button */
+.button {
+  @apply h-[45px] pl-[25px] pr-[25px] flex justify-center items-center rounded-[4px] bg-primary text-white border border-solid border-primary cursor-pointer font-semibold transition duration-[0.35s] ease-in-out w-auto hover:bg-black hover:border-black hover:text-white;
+}
+
+.white-button {
+  @apply bg-white text-black border-blue;
+}
+
+.big-button {
+  @apply pl-[40px] pr-[40px] mt-[20px];
+}
+
+.big-white-button {
+  @apply mt-[20px] pl-[43px] pr-[43px] bg-white text-black border-blue max-w-[164px];
+}
+
+.big-orange {
+  @apply w-[200px] disabled:bg-disabled disabled:text-silver disabled:cursor-default;
+}
+
+.retry-button {
+  @apply w-[150px];
+}
+
+.language-button {
+  @apply w-[120px] bg-primary text-white;
+}

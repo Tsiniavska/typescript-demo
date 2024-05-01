@@ -1,28 +1,33 @@
 export interface ListItem {
   id: number;
-  text: string;
+  to: string;
   href: string;
 }
 
 const LIST: ListItem[] = [
   {
     id: 1,
-    text: 'Product',
+    to: 'Product',
     href: '#',
   },
   {
     id: 2,
-    text: 'Customers',
+    to: 'Customers',
     href: '#',
   },
   {
     id: 3,
-    text: 'Pricing',
+    to: 'Pricing',
     href: '#',
   },
   {
     id: 4,
-    text: 'Resources',
+    to: 'Resources',
+    href: '#',
+  },
+  {
+    id: 5,
+    to: 'Comments',
     href: '#',
   },
 ];

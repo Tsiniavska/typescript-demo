@@ -3,15 +3,14 @@ import React from 'react';
 
 // * Components
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
-
-// * Styles
-import styles from './Registration.module.css';
+import Page from '../../components/Page/Page';
 
 const Registration: React.FC = () => {
   return (
     <>
-      <h1 className={styles.title}>Registration</h1>
-      <RegistrationForm />;
+      <Page title="Registration">
+        <RegistrationForm />
+      </Page>
     </>
   );
 };

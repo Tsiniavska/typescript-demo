@@ -10,13 +10,18 @@ import Loading from './components/Loading/Loading';
 
 // * Pages
 const Banner = lazy(() => import('./pages/Banner/Banner'));
-// const Product = lazy(() => import('./pages/Product/Product'));
-// const Customers = lazy(() => import('./pages/Customers/Customers'));
-// const Pricing = lazy(() => import('./pages/Pricing/Pricing'));
-// const Resources = lazy(() => import('./pages/Resources/Resources'));
+const Product = lazy(() => import('./pages/Product/Product'));
+const Customers = lazy(() => import('./pages/Customers/Customers'));
+const Pricing = lazy(() => import('./pages/Pricing/Pricing'));
+const Resources = lazy(() => import('./pages/Resources/Resources'));
 const Error = lazy(() => import('./pages/Error/Error'));
-// const List = lazy(() => import('./pages/List/List'));
+const List = lazy(() => import('./pages/List/List'));
 const Registration = lazy(() => import('./pages/Registration/Registration'));
+const Comments = lazy(() => import('./pages/Comments/Comments'));
+const Detail = lazy(() => import('./pages/Comments/Detail/Detail'));
+const ListComments = lazy(
+  () => import('./pages/Comments/ListComments/ListComments')
+);
 
 // * Element
 const Element: React.FC<{ component: JSX.Element }> = ({ component }) => {
@@ -32,30 +37,44 @@ const routes = createBrowserRouter([
         path: '/',
         element: <Element component={<Banner />} />,
       },
-      // {
-      //   path: '/product',
-      //   element: <Element component={<Product />} />,
-      // },
-      // {
-      //   path: '/customers',
-      //   element: <Element component={<Customers />} />,
-      // },
-      // {
-      //   path: '/pricing',
-      //   element: <Element component={<Pricing />} />,
-      // },
-      // {
-      //   path: '/resources',
-      //   element: <Element component={<Resources />} />,
-      // },
+      {
+        path: '/product',
+        element: <Element component={<Product />} />,
+      },
+      {
+        path: '/customers',
+        element: <Element component={<Customers />} />,
+      },
+      {
+        path: '/pricing',
+        element: <Element component={<Pricing />} />,
+      },
+      {
+        path: '/resources',
+        element: <Element component={<Resources />} />,
+      },
+      {
+        path: '/comments',
+        element: <Element component={<Comments />} />,
+        children: [
+          {
+            path: '',
+            element: <Element component={<ListComments />} />,
+          },
+          {
+            path: ':id',
+            element: <Element component={<Detail />} />,
+          },
+        ],
+      },
       {
         path: '/registration',
         element: <Element component={<Registration />} />,
       },
-      // {
-      //   path: '/list',
-      //   element: <Element component={<List />} />,
-      // },
+      {
+        path: '/list',
+        element: <Element component={<List />} />,
+      },
       {
         path: '*',
         element: <Element component={<Error />} />,

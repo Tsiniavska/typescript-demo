@@ -1,22 +1,11 @@
 // * Base
 import React from 'react';
 
-// * Components
-import Wrapper from '../Wrapper/Wrapper';
-
-// * Styles
-import styles from './Loading.module.css';
-
-// * Types local
-type TLoadingProps = {
-  // Опис пропсів, якщо вони будуть
-};
-
-const Loading: React.FC<TLoadingProps> = () => {
+const Loading: React.FC = () => {
   return (
-    <Wrapper>
-      <div className={styles.text}>Loading...</div>
-    </Wrapper>
+    <div className="wrapper">
+      <div className="text-primary text-2xl mt-[30px] ">Loading...</div>
+    </div>
   );
 };
 

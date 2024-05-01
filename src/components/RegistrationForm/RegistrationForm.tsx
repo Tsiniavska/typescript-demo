@@ -10,11 +10,13 @@ import CONFIG from './RegistrationForm.data';
 // * Types
 import { EButton, EDesign } from '../../types/button.types';
 
-// * Styles
-import styles from './RegistrationForm.module.css';
-
 // * Local constans
-const INITIAL_VALUES = { email: '', username: '', password: '', phone: '' };
+const INITIAL_VALUES: TFormValues = {
+  email: '',
+  username: '',
+  password: '',
+  phone: '',
+};
 
 // * Types local
 type TFormValues = {
@@ -88,7 +90,10 @@ const RegistrationForm: React.FC = () => {
           handleSubmit,
           isSubmitting,
         }) => (
-          <form onSubmit={handleSubmit} className={styles.form}>
+          <form
+            onSubmit={handleSubmit}
+            className="w-full m-0 mx-auto max-w-[600px] p-[20px] border-2 border-black"
+          >
             <Field
               title="Емейл"
               type="email"
@@ -131,7 +136,7 @@ const RegistrationForm: React.FC = () => {
             />
             <Button
               text="Зареєструватись"
-              design={EDesign.WHITE}
+              design={EDesign.BIGORANGE}
               onClick={() => {}}
               href=""
               type={EButton.SUBMIT}

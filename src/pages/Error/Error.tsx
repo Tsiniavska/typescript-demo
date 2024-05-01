@@ -2,7 +2,11 @@
 import React from 'react';
 
 const Error: React.FC = () => {
-  return <p>Сторінка не знайдена</p>;
+  return (
+    <div className="wrapper">
+      <p>Сторінка не знайдена</p>
+    </div>
+  );
 };
 
 export default Error;

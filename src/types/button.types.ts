@@ -9,5 +9,7 @@ export enum EDesign {
   WHITE = 'white',
   BIG = 'big',
   BIGWHITE = 'bigWhite',
+  BIGORANGE = 'bigOrange',
   RETRY = 'retry',
+  LANGUAGE = 'languageButton',
 }

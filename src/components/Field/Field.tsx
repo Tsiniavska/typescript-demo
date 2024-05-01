@@ -1,9 +1,6 @@
 // * Base
 import React from 'react';
 
-// * Styles
-import styles from './Field.module.css';
-
 // * Types local
 type TFieldProps = {
   title: string;
@@ -28,10 +25,10 @@ const Field: React.FC<TFieldProps> = ({
 }) => {
   return (
     <>
-      <label className={styles.lable}>
-        {title && <div className={styles.title}>{title}</div>}
+      <label className="block">
+        {title && <div className="leading-none mb-[5px]">{title}</div>}
         <input
-          className={styles.input}
+          className="h-[40px] pl-[10px] pr-[10px] w-full"
           type={type}
           name={name}
           onChange={onChange}
@@ -39,7 +36,9 @@ const Field: React.FC<TFieldProps> = ({
           value={value}
           placeholder={placeholder}
         />
-        <div className={styles.error}>{error}</div>
+        <div className="text-red text-xs leading-none h-[25px] pt-[5px]">
+          {error}
+        </div>
       </label>
     </>
   );

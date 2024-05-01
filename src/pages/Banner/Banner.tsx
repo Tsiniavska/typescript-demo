@@ -1,64 +1,68 @@
 // * Base
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // * Components
 import Button from '../../components/Button/Button';
-import Wrapper from '../../components/Wrapper/Wrapper';
-
-// * Styles
-import styles from './Banner.module.css';
-import { Link } from 'react-router-dom';
+import Page from '../../components/Page/Page';
 
 // * Type
 import { EButton, EDesign } from '../../types/button.types';
+import { useTranslation } from 'react-i18next';
 
-const Banner: React.FC = () => {
+const Banner: React.FC = memo(() => {
   const [count, setCount] = useState<number>(0);
 
   const add = () => {
     setCount((prev) => prev + 1);
   };
 
+  const { t } = useTranslation();
+
   return (
-    <main className={styles.banner}>
-      <Wrapper className={[styles.wrapper]}>
-        <div className={styles.block}>
-          <h1>The Design Thinking superpowers: {count}</h1>
-          <p className={styles.text}>
-            Tools, tutorials, design and innovation experts, all in one place!
-            The most intuitive way to imagine your next user experience.
-          </p>
-          <Button
-            text="Get started"
-            design={EDesign.BIG}
-            href=""
-            type={EButton.BUTTON}
-            onClick={add}
-          />
-          <Button
-            text="Instagram"
-            design={EDesign.BIGWHITE}
-            href="https://www.instagram.com/"
-            type={EButton.BUTTON}
-            onClick={() => {}}
-          />
-          <Link to="/list">
+    <Page title="">
+      <main className="h-[calc(100vh-80px)] block items-center pt-[70px] pb-[70px]">
+        <div className="wrapper flex items-center gap-[30px]">
+          <div className="w-full max-w-[500px]">
+            <h1 className="font-bold">
+              {t('title')} {count}
+            </h1>
+            <p className="mt-[30px] text-[1.125em] cursor-default leading-7">
+              Tools, tutorials, design and innovation experts, all in one place!
+              The most intuitive way to imagine your next user experience.
+            </p>
             <Button
-              text="Our partners"
-              design={EDesign.BIGWHITE}
+              text="Get started"
+              design={EDesign.BIG}
               href=""
+              type={EButton.BUTTON}
+              onClick={add}
+            />
+            <Button
+              text="Instagram"
+              design={EDesign.BIGWHITE}
+              href="https://www.instagram.com/"
               type={EButton.BUTTON}
               onClick={() => {}}
             />
-          </Link>
+            <Link to="/list">
+              <Button
+                text="Our partners"
+                design={EDesign.BIGWHITE}
+                href=""
+                type={EButton.BUTTON}
+                onClick={() => {}}
+              />
+            </Link>
+          </div>
+          <div className="w-full flex">
+            <img src="/banner.svg" alt="banner" />
+          </div>
         </div>
-        <div className={styles.image}>
-          <img src="/banner.svg" alt="banner" />
-        </div>
-      </Wrapper>
-    </main>
+      </main>
+    </Page>
   );
-};
+});
 
 export default Banner;

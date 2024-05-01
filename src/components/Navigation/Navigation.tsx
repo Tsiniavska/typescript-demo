@@ -1,19 +1,19 @@
 // * Base
 import { Link } from 'react-router-dom';
 import React from 'react';
-
-// * Styles
-import styles from './Navigation.module.css';
+import { useTranslation } from 'react-i18next';
 
 // * Data
 import LIST from '../../types/Navigation.data';
 
 const Navigation: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <nav>
-      <ul className={styles.list}>
-        {LIST.map(({ id, text }) => (
-          <Item key={`navigation-item ${id}`} text={text} />
+      <ul className="flex items-center">
+        {LIST.map(({ id, to }) => (
+          <Item key={`navigation-item ${id}`} to={to} text={t(to)} />
         ))}
       </ul>
     </nav>
@@ -22,13 +22,17 @@ const Navigation: React.FC = () => {
 
 // * Types local
 type TItemProps = {
+  to: string;
   text: string;
 };
 
-const Item: React.FC<TItemProps> = ({ text }) => {
+const Item: React.FC<TItemProps> = ({ to, text }) => {
   return (
     <li>
-      <Link to={text} className={styles.link}>
+      <Link
+        to={to}
+        className="p-[10px] flex text-black transition duration-0.35 ease-in-out hover:text-primary"
+      >
         {text}
       </Link>
     </li>

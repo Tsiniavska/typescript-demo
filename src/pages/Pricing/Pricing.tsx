@@ -1,9 +1,17 @@
-const Pricing = () => {
+// * Base
+import React, { memo } from 'react';
+
+// * Components
+import Page from './../../components/Page/Page';
+
+const Pricing: React.FC = memo(() => {
   return (
     <>
-      <h2>Pricing</h2>
+      <Page title="Pricing">
+        <p>This page is about our pricing</p>
+      </Page>
     </>
   );
-};
+});
 
 export default Pricing;
